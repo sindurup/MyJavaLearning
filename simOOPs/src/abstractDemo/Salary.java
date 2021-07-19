@@ -30,7 +30,7 @@ class Infosys extends Salary
 	@Override
 	public int TA() {
 		// TODO Auto-generated method stub
-		return 1500;
+		return 2500;
 	}
 	
 }
