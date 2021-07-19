@@ -1,0 +1,18 @@
+package package2;
+
+public class ArithOperators
+{
+	int index=0;
+	int[] array=new int[3];
+	array[index++]=10;
+	array[index++]=20;
+	array[index++]=30;
+	System.out.println("Index="+index);
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

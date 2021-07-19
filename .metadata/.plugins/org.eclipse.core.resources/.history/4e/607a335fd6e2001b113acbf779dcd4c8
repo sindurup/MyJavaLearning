@@ -1,0 +1,51 @@
+package package2;
+
+public class ConstructOverloadClass {
+	
+int id;;
+boolean international;
+String name;
+double fee;
+double internationfee;
+
+ConstructOverloadClass(int newId,String newName,double newFee,double newIntFee,boolean isInternational)
+{
+id=newId;
+name=newName;
+fee=newFee;
+
+internationfee=newIntFee;
+international=isInternational;
+
+System.out.println("ID="+id);
+System.out.println("NameD="+name);
+System.out.println("Fee="+fee);
+System.out.println("IntFee="+internationfee);
+System.out.println("IsInternational="+international);
+
+}
+	
+ConstructOverloadClass(int newId,String newName,double newFee,double newIntFee,boolean isInternational)
+{
+id=newId;
+name=newName;
+fee=newFee;
+
+internationfee=newIntFee;
+international=isInternational;
+
+System.out.println("ID="+id);
+System.out.println("NameD="+name);
+System.out.println("Fee="+fee);
+System.out.println("IntFee="+internationfee);
+System.out.println("IsInternational="+international);
+
+}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
