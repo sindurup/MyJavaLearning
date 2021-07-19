@@ -1,5 +1,6 @@
 package listDemo;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class arrayListDemo {
 
@@ -10,13 +11,25 @@ public class arrayListDemo {
 		data.add(100);
 		data.add(200);
 		data.add(300);
-		data.
+		
+		//display data
+		//--------------------------------
+		Iterator itr=data.iterator();
+		
+		while(itr.hasNext())
+		{
+			System.out.println(itr.next());
+		}
+		
+		//-------------------------
+		
+		
+		
 		
 		for (int d:data)
 			sum+=d;
 		System.out.println("Total:"+sum);
-		System.out.println("Hello");
-		System.out.println("Hello");
+	
 		
 			
 	}
