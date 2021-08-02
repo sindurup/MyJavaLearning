@@ -1,8 +1,11 @@
 package fileReading;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -21,9 +24,11 @@ public class FileReaderClass
 		
 		try
 		{
+			//System.out.println("lines");
 			
-			var lines=Files.readAllLines(Paths.get("‪D://Hello.txt"));
-			System.out.println(lines);
+			
+			var lines=Files.readAllLines(Paths.get("D:\\Hello.txt"));
+			System.out.println("lines="+lines);
 			boolean isFound=false;
 			Scanner obj=new Scanner(System.in);
 			String name;
@@ -35,19 +40,25 @@ public class FileReaderClass
 			{
 				 data=a.split(",");
 				
-				
-			}
+				//System.out.println(data[0]);	
 			
 			
+			
+			
+			
+		//	System.out.print(data[0].equals(name));
 			if(data[0].equals(name))
 			{
+				//System.out.println(data[1]);
+				//studentScores.add(Integer.parseInt(data[1]));
 				studentScores.add(Integer.parseInt(data[1]));
 				isFound=true;
+			}
 			}
 			
 			if(isFound)
 			{
-				for(int i:studentScores)
+				for(var i:studentScores)
 					System.out.println(i);
 			}
 			else
@@ -59,12 +70,20 @@ public class FileReaderClass
 
 	
 	}
-		catch(Exception ex)
+		catch(FileNotFoundException ex)
 		{
-			
+			System.out.println("File not found");
+		}
+		
+		catch(InvalidPathException ex2)
+		{
+			System.out.println("path not valid");
 		}
 		
 	
-
+		catch (IOException ex1) 
+		{
+			System.out.println("IO exception");
+		}
 }
 }

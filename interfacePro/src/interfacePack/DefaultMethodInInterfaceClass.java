@@ -17,6 +17,11 @@ class DemoImp implements Demo
 	{
 		System.out.println("In show");
 	}
+	
+	public void print()
+	{
+		System.out.println("In new print");
+	}
 }
 public class DefaultMethodInInterfaceClass {
 
