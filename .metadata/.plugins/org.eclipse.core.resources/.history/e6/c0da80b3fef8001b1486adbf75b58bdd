@@ -29,8 +29,8 @@ public  class FileManager
 		int i=1,j=1;
 		int lCount;
 		Scanner obj=new Scanner(System.in);
-		BufferedWriter writer = null;
-		//FileWriter fw=null;
+		//BufferedWriter writer = null;
+		FileWriter fw=null;
 		
 		
 		//taking input from user
@@ -38,7 +38,6 @@ public  class FileManager
 		count=obj.nextInt();
 
 	try {
-		
 		do {		
 		System.out.println("Please enter file name to create");
 		
@@ -52,18 +51,18 @@ public  class FileManager
 		        
 		        System.out.println("Enter how many lines do u want to write in the file");
 			      lCount=obj.nextInt();
-			    
-			      writer = new BufferedWriter(new FileWriter(f));
+			      
 			     for(j=1;j<=lCount;j++)
 			     {
 			    	  System.out.println("Line"+j+":");	    	  
-			    	 
+			    	 // writer = new BufferedWriter(new FileWriter(f));
+			    	  fw=new FileWriter(f);
 			    	  str=obj.next();
-			          writer.write(String.format(str));
-			    	
-			    	 
-			           writer.newLine();
-			    	 
+			          // writer.write(String.format(str+%n));
+			    	  fw.write(str+"%n");
+			    	 // fw.
+			          // writer.newLine();
+			    	 // j++;
 			        }
 			          
 		      } 
@@ -79,7 +78,7 @@ public  class FileManager
 		    
 			
 		      
-		      writer.close();
+		      fw.close();
 		      
 		      
 		        i++;

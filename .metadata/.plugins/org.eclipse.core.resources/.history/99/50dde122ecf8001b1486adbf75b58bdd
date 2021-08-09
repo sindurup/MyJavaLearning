@@ -24,13 +24,10 @@ public  class FileManager
 	{
 		
 		//Variable declaration
-		String fname,str;
+		String fname;
 		int count;
-		int i=1,j=1;
-		int lCount;
+		int i=1;
 		Scanner obj=new Scanner(System.in);
-		BufferedWriter writer = null;
-		//FileWriter fw=null;
 		
 		
 		//taking input from user
@@ -38,7 +35,6 @@ public  class FileManager
 		count=obj.nextInt();
 
 	try {
-		
 		do {		
 		System.out.println("Please enter file name to create");
 		
@@ -49,23 +45,6 @@ public  class FileManager
 		      if (f.createNewFile())
 		      {
 		        System.out.println("File created: " + f.getName());
-		        
-		        System.out.println("Enter how many lines do u want to write in the file");
-			      lCount=obj.nextInt();
-			    
-			      writer = new BufferedWriter(new FileWriter(f));
-			     for(j=1;j<=lCount;j++)
-			     {
-			    	  System.out.println("Line"+j+":");	    	  
-			    	 
-			    	  str=obj.next();
-			          writer.write(String.format(str));
-			    	
-			    	 
-			           writer.newLine();
-			    	 
-			        }
-			          
 		      } 
 		      else 
 		      {
@@ -74,14 +53,11 @@ public  class FileManager
 		    	  
 		      }
 		      
-		     
-		      j=1;
-		    
-			
-		      
-		      writer.close();
-		      
-		      
+			      FileWriter myWriter = new FileWriter(FILEPATH//f.getName());
+			      
+			      myWriter.write("Files in Java might be tricky, but it is fun enough!");
+			      
+			      myWriter.close();
 		        i++;
 		     } while( i<=count);
 		
@@ -160,7 +136,6 @@ public  class FileManager
 		catch(Exception ex)
 		{
 			System.out.println("An error occured");
-			return isSearch;
 		}
 	}
 

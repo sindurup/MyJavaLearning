@@ -38,7 +38,6 @@ public  class FileManager
 		count=obj.nextInt();
 
 	try {
-		
 		do {		
 		System.out.println("Please enter file name to create");
 		
@@ -52,18 +51,19 @@ public  class FileManager
 		        
 		        System.out.println("Enter how many lines do u want to write in the file");
 			      lCount=obj.nextInt();
-			    
+			     // fw=new FileWriter(f);
 			      writer = new BufferedWriter(new FileWriter(f));
 			     for(j=1;j<=lCount;j++)
 			     {
 			    	  System.out.println("Line"+j+":");	    	  
+			    	 // writer = new BufferedWriter(new FileWriter(f));
 			    	 
 			    	  str=obj.next();
 			          writer.write(String.format(str));
-			    	
+			    	//  fw.write(str);
 			    	 
 			           writer.newLine();
-			    	 
+			    	 // j++;
 			        }
 			          
 		      } 

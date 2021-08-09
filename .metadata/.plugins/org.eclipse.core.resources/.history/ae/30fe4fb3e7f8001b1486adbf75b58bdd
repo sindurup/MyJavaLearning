@@ -3,7 +3,6 @@ package com.LockedMe;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -17,91 +16,12 @@ public  class FileManager
 	public static final String FILEPATH = "D:\\Phase1Project\\Files\\";
 
 	/**
-	 * Creating new file and writing
-	 */
-	
-	public static void createFile()
-	{
-		
-		//Variable declaration
-		String fname,str;
-		int count;
-		int i=1,j=1;
-		int lCount;
-		Scanner obj=new Scanner(System.in);
-		BufferedWriter writer = null;
-		//FileWriter fw=null;
-		
-		
-		//taking input from user
-		System.out.println("Please enter how many files do you want to create:");
-		count=obj.nextInt();
-
-	try {
-		
-		do {		
-		System.out.println("Please enter file name to create");
-		
-			 fname=obj.next();
-		      File f = new File(FILEPATH, fname);
-		      
-		      //Creating new file
-		      if (f.createNewFile())
-		      {
-		        System.out.println("File created: " + f.getName());
-		        
-		        System.out.println("Enter how many lines do u want to write in the file");
-			      lCount=obj.nextInt();
-			    
-			      writer = new BufferedWriter(new FileWriter(f));
-			     for(j=1;j<=lCount;j++)
-			     {
-			    	  System.out.println("Line"+j+":");	    	  
-			    	 
-			    	  str=obj.next();
-			          writer.write(String.format(str));
-			    	
-			    	 
-			           writer.newLine();
-			    	 
-			        }
-			          
-		      } 
-		      else 
-		      {
-		    	  if(f.exists())
-		        System.out.println("File already exists.");
-		    	  
-		      }
-		      
-		     
-		      j=1;
-		    
-			
-		      
-		      writer.close();
-		      
-		      
-		        i++;
-		     } while( i<=count);
-		
-		    } 
-		catch (IOException e)
-		{
-		      System.out.println("An error occurred.");
-		      e.printStackTrace();
-	     }
-	}
-	
-	
-	/**
 	 * Printing file names
 	 */
 	public static void printFileNames()
 	{
 	  // File file = new File(FILEPATH);
-		try
-		{
+		 
 		File folder = new File(FILEPATH);
 		File[] listOfFiles = folder.listFiles();
 		
@@ -113,11 +33,6 @@ public  class FileManager
 		  {
 		    System.out.println("File: " + listOfFiles[i].getName());
 		  }
-		}
-		}
-		catch(Exception ex)
-		{
-			System.out.println("An error occured");
 		}
 		
 	}
@@ -137,13 +52,9 @@ public  class FileManager
 
 		// Taking input from user
 		System.out.println("Enter File name to be searched:");
-		
-		try
-		{
 		fName = obj.next();
 		
-		//Making file name case insensitive using pattern
-		
+		//Making file name case insentive using pattern
 		Pattern pname=Pattern.compile(fName, Pattern.CASE_INSENSITIVE);
 		
 		File f = new File(FILEPATH, pname.toString());
@@ -155,13 +66,6 @@ public  class FileManager
 			isSearch = false;
 
 		return isSearch;
-		}
-		
-		catch(Exception ex)
-		{
-			System.out.println("An error occured");
-			return isSearch;
-		}
 	}
 
 	/**

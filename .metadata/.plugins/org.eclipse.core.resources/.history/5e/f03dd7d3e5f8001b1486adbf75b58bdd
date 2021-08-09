@@ -11,8 +11,7 @@ public class LockedMe {
 
 		//searchFile();
 		//deleteFile();
-		//showNames();
-		createFile();
+		sowNames();
 		
 
 	}
@@ -51,11 +50,6 @@ public class LockedMe {
 		
 	}
 	
-	public static  void createFile()
-	{
-		FileManager fm=new FileManager();
-		fm.createFile();
-	}
 	
 	public static void showNames()
 	{
