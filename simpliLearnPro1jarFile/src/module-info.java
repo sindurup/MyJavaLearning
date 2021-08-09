@@ -1,2 +1,0 @@
-module simpliLearnPro1jarFile {
-}

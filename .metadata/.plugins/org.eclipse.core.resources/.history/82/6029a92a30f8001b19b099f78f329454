@@ -1,0 +1,60 @@
+package com.LockedMe;
+
+import java.util.Scanner;
+
+public class LockedMe {
+
+	public static void main(String[] args)
+	{
+		//
+
+		searchFile();
+
+	}
+	
+	//Display Menu
+	
+	public  static int displayMenu()
+	{
+		//Variable declaration
+		int choice=1;
+		Scanner obj=new Scanner(System.in);
+		
+		//Display Menu items
+		do 
+		{
+			System.out.println("===================================================");
+			System.out.println("\t\tLockedMe.com");
+			System.out.println("===================================================");
+			System.out.println();
+			System.out.println("\t1.Display All Files");
+			System.out.println("\t2.Create a File");
+			System.out.println("\t3.Delete a File");
+			System.out.println("\t4.Search a File");
+			System.out.println("\t5.Exit");
+			System.out.println("Enter your choice:");
+			
+			choice=obj.nextInt();
+		
+		}while(choice>0);
+		
+		return choice;
+		
+	}
+	
+	public static void searchFile()
+	{
+		//variable declaration
+		boolean isFound=false;
+		
+		FileManager fm=new FileManager();
+		
+		isFound=fm.searchFile();
+		if(isFound)
+			System.out.println("File Found");
+		else
+			System.out.println("File not Found");
+	}
+
+
+}

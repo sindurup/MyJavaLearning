@@ -1,0 +1,37 @@
+package com.LockedMe;
+
+import java.io.File;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+public class FileManager {
+	public static final String FILEPATH = "D:\\Phase1Project\\Files\\";
+
+	/**
+	 * Searching File exist or not
+	 * 
+	 * @return boolean
+	 */
+	public static boolean searchFile() {
+		// variable declaration
+		boolean isSearch = false;
+		String fName;
+		Scanner obj = new Scanner(System.in);
+
+		// Taking input from user
+		System.out.println("Enter File name to be searched:");
+		fName = obj.next();
+		Pattern pname=Pattern.compile(fName, Pattern.CASE_INSENSITIVE);
+		
+		File f = new File(FILEPATH, pname);
+		
+		//System.out.println("File:"+f);
+		if (f.exists()) {
+			isSearch = true;
+		} else
+			isSearch = false;
+
+		return isSearch;
+	}
+
+}

@@ -1,0 +1,116 @@
+package com.LockedMe;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+public  class FileManager 
+{
+	public static final String FILEPATH = "D:\\Phase1Project\\Files\\";
+
+	/**
+	 * Printing file names
+	 */
+	public static void printFileNames()
+	{
+	  // File file = new File(FILEPATH);
+		 
+		File folder = new File(FILEPATH);
+		File[] listOfFiles = folder.listFiles();
+
+		for (int i = 0; i < listOfFiles.length; i++)
+		{
+		  if (listOfFiles[i].isFile()) 
+		  {
+		    System.out.println("File " + listOfFiles[i].getName());
+		  }
+		}
+		
+	}
+	
+	/**
+	 * Searching File exist or not
+	 * 
+	 * @return boolean
+	 */
+	public static boolean searchFile()
+	{
+		// variable declaration
+		boolean isSearch = false;
+		String fName;
+		Scanner obj = new Scanner(System.in);
+
+		// Taking input from user
+		System.out.println("Enter File name to be searched:");
+		fName = obj.next();
+		
+		//Making file name case insentive using pattern
+		Pattern pname=Pattern.compile(fName, Pattern.CASE_INSENSITIVE);
+		
+		File f = new File(FILEPATH, pname.toString());
+		
+		//Testing of file existence
+		if (f.exists()) {
+			isSearch = true;
+		} else
+			isSearch = false;
+
+		return isSearch;
+	}
+
+	/**
+	 * Delete File
+	 * @return boolean
+	 */
+	public static boolean deleteFile()
+	{
+		//Variable declaration
+		boolean isDelete=false;
+		String fName;
+		Scanner obj=new Scanner(System.in);
+		// Taking input from user
+		System.out.println("Enter File name to be deleted:");
+		//int flag;
+		
+		try
+		{
+			fName = obj.next();
+			
+			//Making file name case insensitive using pattern
+			Pattern pname=Pattern.compile(fName, Pattern.CASE_INSENSITIVE);
+			
+			File f = new File(FILEPATH, pname.toString());
+			
+			//Checking and deleting  File and returning boolean value
+			if(f.exists())
+			{
+				
+			//flag=1;
+				if(f.delete())
+					isDelete=true;
+				else
+					isDelete=false;
+				
+				//return isDelete;
+			}
+			else
+			{
+				//flag=0;
+				System.out.println("File not exist to delete");
+			}
+			
+			
+			return isDelete;
+	}
+	
+	catch(Exception ex)
+	{
+		System.out.println("Some error occured");
+		return isDelete;
+	}
+		
+}
+}
