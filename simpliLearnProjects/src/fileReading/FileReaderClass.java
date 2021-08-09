@@ -63,7 +63,7 @@ public class FileReaderClass
 			}
 			else
 			{
-				System.out.println("Student is abscent");
+				System.out.println("Student is abscent ****");
 			}
 		
 				
