@@ -12,124 +12,102 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public  class FileManager 
-{
+public class FileManager {
+
 	public static final String FILEPATH = "D:\\Phase1Project\\Files\\";
 
 	/**
-	 * Creating new file and writing
+	 * Creating and writing file
+	 * 
+	 * @return void
 	 */
-	
-	public static void createFile()
-	{
-		
-		//Variable declaration
-		String fname,str;
+
+	public static void createFile() {
+
+		// Variable declaration
+		String fname, str;
 		int count;
-		int i=1,j=1;
+		int i = 1, j = 1;
 		int lCount;
-		Scanner obj=new Scanner(System.in);
+		Scanner obj = new Scanner(System.in);
 		BufferedWriter writer = null;
-		//FileWriter fw=null;
-		
-		
-		//taking input from user
+
+		// taking input from user
 		System.out.println("Please enter how many files do you want to create:");
-		count=obj.nextInt();
+		count = Integer.parseInt(obj.next());
 
-	try {
-		
-		do {		
-		System.out.println("Please enter file name to create");
-		
-			 fname=obj.next();
-		      File f = new File(FILEPATH, fname);
-		      
-		      //Creating new file
-		      if (f.createNewFile())
-		      {
-		        System.out.println("File created: " + f.getName());
-		        
-		        System.out.println("Enter how many lines do u want to write in the file");
-			      lCount=obj.nextInt();
-			    
-			      writer = new BufferedWriter(new FileWriter(f));
-			     for(j=1;j<=lCount;j++)
-			     {
-			    	  System.out.println("Line"+j+":");	    	  
-			    	 
-			    	  str=obj.next();
-			          writer.write(String.format(str));
-			    	
-			    	 
-			           writer.newLine();
-			    	 
-			        }
-			          
-		      } 
-		      else 
-		      {
-		    	  if(f.exists())
-		        System.out.println("File already exists.");
-		    	  
-		      }
-		      
-		     
-		      j=1;
-		    
-			
-		      
-		      writer.close();
-		      
-		      
-		        i++;
-		     } while( i<=count);
-		
-		    } 
-		catch (IOException e)
-		{
-		      System.out.println("An error occurred.");
-		      e.printStackTrace();
-	     }
+		try {
+
+			do {
+				System.out.println("Please enter file name to create:");
+
+				fname = obj.next();
+				File f = new File(FILEPATH, fname);
+
+				// Creating new file
+				if (f.createNewFile()) {
+					System.out.println("File created: " + f.getName());
+
+					System.out.println("Enter how many lines do u want to write in the file:");
+					lCount = obj.nextInt();
+
+					writer = new BufferedWriter(new FileWriter(f));
+					for (j = 1; j <= lCount; j++) {
+						System.out.println("Line" + j + ":");
+
+						str = obj.next();
+						writer.write(String.format(str));
+
+						writer.newLine();
+
+					}
+
+				} else {
+					if (f.exists())
+						System.out.println("File already exists.");
+
+				}
+
+				j = 1;
+
+				// writer.close();
+
+				i++;
+			} while (i <= count);
+
+		} catch (Exception e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
 	}
-	
-	
+
 	/**
-	 * Printing file names
+	 * printing file names
+	 * 
+	 * @return List<>
 	 */
-	public static void printFileNames()
-	{
-	  // File file = new File(FILEPATH);
-		try
-		{
-		File folder = new File(FILEPATH);
-		File[] listOfFiles = folder.listFiles();
-		
-		//Printing all file names
+	public static List<String> getFiles() {
+		// Creating file object
+		File f1 = new File(FILEPATH);
 
-		for (int i = 0; i < listOfFiles.length; i++)
-		{
-		  if (listOfFiles[i].isFile()) 
-		  {
-		    System.out.println("File: " + listOfFiles[i].getName());
-		  }
-		}
-		}
-		catch(Exception ex)
-		{
-			System.out.println("An error occured");
-		}
-		
+		// Fetching all files
+		File[] listOfFiles = f1.listFiles();
+
+		// Storing filenames in alist
+		List<String> fNames = new ArrayList<String>();
+
+		for (File f : listOfFiles)
+			fNames.add(f.getName());
+		return fNames;
+
 	}
-	
-	
+
 	/**
 	 * Searching File exist or not
 	 * 
 	 * @return boolean
 	 */
-	public static boolean searchFile()
-	{
+	public static boolean searchFile() {
 		// variable declaration
 		boolean isSearch = false;
 		String fName;
@@ -137,28 +115,26 @@ public  class FileManager
 
 		// Taking input from user
 		System.out.println("Enter File name to be searched:");
-		
-		try
-		{
-		fName = obj.next();
-		
-		//Making file name case insensitive using pattern
-		
-		Pattern pname=Pattern.compile(fName, Pattern.CASE_INSENSITIVE);
-		
-		File f = new File(FILEPATH, pname.toString());
-		
-		//Testing of file existence
-		if (f.exists()) {
-			isSearch = true;
-		} else
-			isSearch = false;
 
-		return isSearch;
+		try {
+			fName = obj.next();
+
+			// Making file name case insensitive using pattern
+
+			Pattern pname = Pattern.compile(fName, Pattern.CASE_INSENSITIVE);
+
+			File f = new File(FILEPATH, pname.toString());
+
+			// Testing of file existence
+			if (f.exists()) {
+				isSearch = true;
+			} else
+				isSearch = false;
+
+			return isSearch;
 		}
-		
-		catch(Exception ex)
-		{
+
+		catch (Exception ex) {
 			System.out.println("An error occured");
 			return isSearch;
 		}
@@ -166,54 +142,47 @@ public  class FileManager
 
 	/**
 	 * Delete File
+	 * 
 	 * @return boolean
 	 */
-	public static boolean deleteFile()
-	{
-		//Variable declaration
-		boolean isDelete=false;
+	public static boolean deleteFile() {
+		// Variable declaration
+		boolean isDelete = false;
 		String fName;
-		Scanner obj=new Scanner(System.in);
+		Scanner obj = new Scanner(System.in);
 		// Taking input from user
 		System.out.println("Enter File name to be deleted:");
-		//int flag;
-		
-		try
-		{
+
+		try {
 			fName = obj.next();
-			
-			//Making file name case insensitive using pattern
-			Pattern pname=Pattern.compile(fName, Pattern.CASE_INSENSITIVE);
-			
+
+			// Making file name case insensitive using pattern
+			Pattern pname = Pattern.compile(fName, Pattern.CASE_INSENSITIVE);
+
 			File f = new File(FILEPATH, pname.toString());
-			
-			//Checking and deleting  File and returning boolean value
-			if(f.exists())
-			{
-				
-			//flag=1;
-				if(f.delete())
-					isDelete=true;
+
+			// Checking and deleting File and returning boolean value
+			if (f.exists()) {
+
+				// flag=1;
+				if (f.delete())
+					isDelete = true;
 				else
-					isDelete=false;
-				
-				//return isDelete;
-			}
-			else
-			{
-				//flag=0;
+					isDelete = false;
+
+				// return isDelete;
+			} else {
+				// flag=0;
 				System.out.println("File not exist to delete");
 			}
-			
-			
+
 			return isDelete;
+		}
+
+		catch (Exception ex) {
+			System.out.println("Some error occured");
+			return isDelete;
+		}
+
 	}
-	
-	catch(Exception ex)
-	{
-		System.out.println("Some error occured");
-		return isDelete;
-	}
-		
-}
 }
